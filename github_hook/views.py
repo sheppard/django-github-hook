@@ -14,15 +14,26 @@ class HookView(GenericAPIView):
         # Git repo information from Github post-receive payload
         payload = json.loads(request.DATA.get('payload', "{}"))
         info = payload.get('repository', {})
-        repo = info.get('name', None)
-        user = info.get('owner', {}).get('name', None)
+        try:
+            repo = info.get('name', None)
+            user = info.get('owner', {}).get('name', None)
+        except:
+            try:
+                name = kwargs['name']
+            except:
+                raise Exception("No JSON data or URL argument : cannot identify hook")
+
 
         # Find and execute registered hook for the given repo, fail silently
         # if none exist
-        if repo and user:
-            try:
+        try:
+            hook = None
+            if name:
+                hook = Hook.objects.get(name=name)
+            elif repo and user:
                 hook = Hook.objects.get(user=user, repo=repo)
+            if hook:
                 hook.execute()
-            except Hook.DoesNotExist:
-                pass
+        except Hook.DoesNotExist:
+            pass
         return Response({})

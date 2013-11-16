@@ -7,5 +7,6 @@ router = routers.DefaultRouter()
 router.register(r'', HookView(),'hook')
 
 urlpatterns = patterns('',
-	url(r'^', HookView.as_view()),
+	url(r'^(?P<name>[\w-]+)$', HookView.as_view()),
+	url(r'^$', HookView.as_view()),
 )
