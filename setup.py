@@ -12,8 +12,8 @@ from setuptools import setup
 setup(
     name='django-github-hook',
     version='0.1.0',
-    description='Django generic URL patterns',
-    long_description="small hack to make URL confs more readable (forked by Hugo Geoffroy to add setup.py)",
+    description='Django GitHub (& Bitbucket) hooks',
+    long_description="Trigger script from POST request (forked by Hugo Geoffroy to add setup.py)",
     author='S. Andrew Sheppard, Hugo Geoffroy',
     author_email='andrew@wq.io',
     packages = ['github_hook'],
