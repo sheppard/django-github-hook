@@ -10,7 +10,7 @@ from setuptools import setup
 
 
 setup(
-    name='django-github-patterns',
+    name='django-github-hook',
     version='0.1.0',
     description='Django generic URL patterns',
     long_description="small hack to make URL confs more readable (forked by Hugo Geoffroy to add setup.py)",
