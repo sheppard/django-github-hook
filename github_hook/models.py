@@ -1,6 +1,7 @@
 from django.db import models
 import subprocess
 
+
 class Hook(models.Model):
     name = models.CharField(max_length=255)
     user = models.CharField(max_length=255)

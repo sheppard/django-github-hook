@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Hook
 
+
 class HookView(GenericAPIView):
     renderer_classes = [JSONRenderer]
 
@@ -21,8 +22,9 @@ class HookView(GenericAPIView):
         user = info.get('owner', {}).get('name', None)
 
         if not name and not repo and not user:
-            raise Exception("No JSON data or URL argument : cannot identify hook")
-
+            raise Exception(
+                "No JSON data or URL argument : cannot identify hook"
+            )
 
         # Find and execute registered hook for the given repo, fail silently
         # if none exist
