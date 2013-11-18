@@ -15,11 +15,16 @@ class HookView(GenericAPIView):
         # Explicit hook name
         name = kwargs.get('name', None)
 
-        # Git repo information from Github post-receive payload
+        # Git repo information from post-receive payload
         payload = json.loads(request.DATA.get('payload', "{}"))
         info = payload.get('repository', {})
         repo = info.get('name', None)
-        user = info.get('owner', {}).get('name', None)
+
+        # GitHub: repository['owner'] = {'name': name, 'email': email}
+        # BitBucket: repository['owner'] = name
+        user = info.get('owner', {})
+        if isinstance(user, dict):
+            user = user.get('name', None)
 
         if not name and not repo and not user:
             raise Exception(

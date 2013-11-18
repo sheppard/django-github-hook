@@ -2,7 +2,7 @@ github\_hook
 ============
 
 Simple continuous integration for Django developers, taking the form of
-a Django app for managing Github post receive hooks.
+a Django app for managing GitHub (or BitBucket) post receive hooks.
 
 Usage
 -----
@@ -16,15 +16,15 @@ Usage
 -  Configure your hook with the folowing fields:
 
    -  *Name*: Hook identifier
-   -  *User*: Github repo username
-   -  *Repo*: Github repo name
+   -  *User*: Repo username
+   -  *Repo*: Repo name
    -  *Path*: Absolute path to script to execute
 
--  Go to your repo's "Service Hooks" settings on Github and add a
-   WebHook URL:
+-  Go to your repo's "Service Hooks" settings on GitHub (or BitBucket) and add a
+   WebHook/POST URL:
 
    -  http[s]://[yourwebsite]/hook
-   -  Github will post the repo information as part of the JSON payload
+   -  The repo information will be read from the JSON payload
 
 -  Alternatively, you can specify a specific hook by name:
 
