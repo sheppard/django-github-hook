@@ -12,3 +12,6 @@ class Hook(models.Model):
 
     def __unicode__(self):
         return "%s (%s/%s)" % (self.name, self.user, self.repo)
+
+    class Meta:
+        db_table = 'github_hook'

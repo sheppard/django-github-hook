@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import datetime
+from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Hook'
-        db.create_table(u'github_hook_hook', (
+        db.create_table('github_hook', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('user', self.gf('django.db.models.fields.CharField')(max_length=255)),
@@ -21,12 +21,12 @@ class Migration(SchemaMigration):
 
     def backwards(self, orm):
         # Deleting model 'Hook'
-        db.delete_table(u'github_hook_hook')
+        db.delete_table('github_hook')
 
 
     models = {
         u'github_hook.hook': {
-            'Meta': {'object_name': 'Hook'},
+            'Meta': {'object_name': 'Hook', 'db_table': "'github_hook'"},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'path': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
