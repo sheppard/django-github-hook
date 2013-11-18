@@ -11,17 +11,17 @@ class HookView(GenericAPIView):
 
     @csrf_exempt
     def post(self, request, *args, **kwargs):
+        # Explicit hook name
+        name = kwargs.get('name', None)
+
         # Git repo information from Github post-receive payload
         payload = json.loads(request.DATA.get('payload', "{}"))
         info = payload.get('repository', {})
-        try:
-            repo = info.get('name', None)
-            user = info.get('owner', {}).get('name', None)
-        except:
-            try:
-                name = kwargs['name']
-            except:
-                raise Exception("No JSON data or URL argument : cannot identify hook")
+        repo = info.get('name', None)
+        user = info.get('owner', {}).get('name', None)
+
+        if not name and not repo and not user:
+            raise Exception("No JSON data or URL argument : cannot identify hook")
 
 
         # Find and execute registered hook for the given repo, fail silently
