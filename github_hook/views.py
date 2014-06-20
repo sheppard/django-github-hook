@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.renderers import JSONRenderer
@@ -5,6 +7,9 @@ from rest_framework.renderers import JSONRenderer
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Hook
+
+logger = logging.getLogger(__file__)
+logger.setLevel(logging.DEBUG)
 
 
 class HookView(GenericAPIView):
@@ -16,7 +21,7 @@ class HookView(GenericAPIView):
         name = kwargs.get('name', None)
 
         # Git repo information from post-receive payload
-        payload = json.loads(request.DATA.get('payload', "{}"))
+        payload = request.DATA
         info = payload.get('repository', {})
         repo = info.get('name', None)
 
@@ -44,3 +49,6 @@ class HookView(GenericAPIView):
         except Hook.DoesNotExist:
             pass
         return Response({})
+
+    def get(self, request, *args, **kwargs):
+        return Response({'message': 'you cannot use get for github webhooks'})
