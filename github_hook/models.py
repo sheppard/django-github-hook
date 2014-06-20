@@ -1,4 +1,5 @@
 from django.db import models
+from django import dispatch
 import subprocess
 
 
@@ -16,3 +17,9 @@ class Hook(models.Model):
 
     class Meta:
         db_table = 'github_hook'
+
+
+class HookSignal(dispatch.Signal):
+    pass
+
+hook_signal = HookSignal()
