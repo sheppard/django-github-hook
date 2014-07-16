@@ -9,7 +9,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.exceptions import ParseError
 
 from django.views.decorators.csrf import csrf_exempt
-from .models import Hook, hook_signal, HookSignal
+from .models import Hook, hook_signal
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -25,7 +25,12 @@ class HookView(GenericAPIView):
         name = kwargs.get('name', None)
 
         # Git repo information from post-receive payload
-        payload = request.DATA
+        if request.content_type == "application/json":
+            payload = request.DATA
+        else:
+            # Probably application/x-www-form-urlencoded
+            payload = json.loads(request.DATA.get("payload", "{}"))
+
         info = payload.get('repository', {})
         repo = info.get('name', None)
 
@@ -52,10 +57,6 @@ class HookView(GenericAPIView):
                 hook.execute()
         except Hook.DoesNotExist:
             # If there is not a script defined, then send a HookSignal
-            hook_signal.send(HookSignal, request=request)
+            hook_signal.send(HookView, request=request)
             logger.debug('Signal {} sent'.format(hook_signal))
         return Response({})
-
-    def get(self, request, *args, **kwargs):
-        return Response({'message': 'You cannot use GET for github webhooks'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
