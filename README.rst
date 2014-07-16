@@ -4,6 +4,9 @@ github\_hook
 Simple continuous integration for Django developers, taking the form of
 a Django app for managing GitHub (or BitBucket) post receive hooks.
 
+.. image:: https://travis-ci.org/sheppard/django-github-hook.svg?branch=master
+    :target: https://travis-ci.org/sheppard/django-github-hook
+
 Usage
 -----
 

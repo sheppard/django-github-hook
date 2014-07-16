@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import subprocess
 
 
+@python_2_unicode_compatible
 class Hook(models.Model):
     name = models.CharField(max_length=255)
     user = models.CharField(max_length=255)
@@ -11,7 +13,7 @@ class Hook(models.Model):
     def execute(self):
         subprocess.call([self.path])
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s/%s)" % (self.name, self.user, self.repo)
 
     class Meta:
