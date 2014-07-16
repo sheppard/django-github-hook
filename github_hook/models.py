@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django import dispatch
 import subprocess
 
 
@@ -18,3 +19,9 @@ class Hook(models.Model):
 
     class Meta:
         db_table = 'github_hook'
+
+
+class HookSignal(dispatch.Signal):
+    pass
+
+hook_signal = HookSignal()
