@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.renderers import JSONRenderer
+from rest_framework.exceptions import ParseError
 
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -27,7 +28,7 @@ class HookView(GenericAPIView):
             user = user.get('name', None)
 
         if not name and not repo and not user:
-            raise Exception(
+            raise ParseError(
                 "No JSON data or URL argument : cannot identify hook"
             )
 

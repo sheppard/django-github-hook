@@ -39,4 +39,5 @@ setup(
         'Development Status :: 3 - Alpha',
     ],
     platforms=['any'],
+    test_suite='tests'
 )

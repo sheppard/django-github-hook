@@ -1,0 +1,9 @@
+{
+    "repository": {
+        "name":"test",
+        "owner": {
+            "name": "user",
+            "email": "user@example.com"
+        }
+    }
+}
