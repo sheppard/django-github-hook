@@ -61,6 +61,6 @@ class HookView(GenericAPIView):
                     
         except Hook.DoesNotExist:
             # If there is not a script defined, then send a HookSignal
-            hook_signal.send(HookView, request=request)
+            hook_signal.send(HookView, request=request, payload=payload)
             logger.debug('Signal {} sent'.format(hook_signal))
         return Response({})
