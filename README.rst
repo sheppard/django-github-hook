@@ -34,3 +34,19 @@ Usage
    -  http[s]://[yourwebsite]/hook/name
 
 
+Examples
+--------
+
+The following snippet show how to connect the webhook to a method using django's signal mechanism.
+Note that path must be set to "send-signal" in the hook object instead of an absolute path to a script.
+
+.. code-block:: python
+
+	from github_hook.models import hook_signal
+
+	def processWebhook(sender, **kwargs):
+		for key, value in kwargs.iteritems():
+			print key, value
+	
+	hook_signal.connect(processWebhook)
+	
