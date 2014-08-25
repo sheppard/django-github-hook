@@ -22,6 +22,6 @@ class Hook(models.Model):
 
 
 class HookSignal(dispatch.Signal):
-    providing_args = ['info', 'repo', 'user', 'request']
+    pass
 
 hook_signal = HookSignal()
