@@ -57,7 +57,7 @@ class HookView(GenericAPIView):
                 if hook.path != "send-signal":
                     hook.execute()
                 else:
-                    hook_signal.send(HookView, hook=hook, info=info, repo=repo, user=user, request=request)
+                    hook_signal.send(HookView, info=info, repo=repo, user=user, request=request)
                     
         except Hook.DoesNotExist:
             # If there is not a script defined, then send a HookSignal
