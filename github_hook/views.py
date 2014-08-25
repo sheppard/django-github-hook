@@ -54,7 +54,7 @@ class HookView(GenericAPIView):
             elif repo and user:
                 hook = Hook.objects.get(user=user, repo=repo)
             if hook:
-                if hook == "send-signal":
+                if hook != "send-signal":
                     hook.execute()
                 else:
                     hook_signal.send(HookView, hook=hook, info=info, repo=repo, user=user, request=request)
