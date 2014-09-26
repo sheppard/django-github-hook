@@ -6,6 +6,10 @@ a Django app for managing GitHub (or BitBucket) post receive hooks.
 
 .. image:: https://travis-ci.org/sheppard/django-github-hook.svg?branch=master
     :target: https://travis-ci.org/sheppard/django-github-hook
+.. image:: https://pypip.in/version/django-github-hook/badge.svg
+    :target: https://pypi.python.org/pypi/django-github-hook
+
+Tested on Python 2.7 and 3.4, with Django 1.6 and 1.7.
 
 Usage
 -----
