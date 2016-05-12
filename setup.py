@@ -23,7 +23,7 @@ def long_description():
 
 setup(
     name='django-github-hook',
-    version='0.1.0',
+    version='0.2.0',
     description='Django-powered GitHub (& Bitbucket) web hooks',
     long_description=long_description(),
     author='S. Andrew Sheppard & Contributors',
@@ -37,6 +37,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Framework :: Django',
         'License :: OSI Approved :: MIT License',
