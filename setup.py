@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    :copyright: Copyright 2013 by S. Andrew Sheppard
+    :copyright: Copyright 2013-2016 by S. Andrew Sheppard
     :contact: andrew@wq.io
 """
 
@@ -26,7 +26,7 @@ setup(
     version='0.1.0',
     description='Django-powered GitHub (& Bitbucket) web hooks',
     long_description=long_description(),
-    author='S. Andrew Sheppard, Hugo Geoffroy',
+    author='S. Andrew Sheppard & Contributors',
     author_email='andrew@wq.io',
     packages = ['github_hook'],
     install_requires=['Django', 'djangorestframework'],
