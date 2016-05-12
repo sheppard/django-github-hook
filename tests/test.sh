@@ -1,2 +1,2 @@
 #!/bin/sh
-echo -n "Hello" >> tests/test.log
+echo "Hello\c" >> tests/test.log

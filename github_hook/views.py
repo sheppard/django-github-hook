@@ -26,10 +26,10 @@ class HookView(GenericAPIView):
 
         # Git repo information from post-receive payload
         if request.content_type == "application/json":
-            payload = request.DATA
+            payload = request.data
         else:
             # Probably application/x-www-form-urlencoded
-            payload = json.loads(request.DATA.get("payload", "{}"))
+            payload = json.loads(request.data.get("payload", "{}"))
 
         info = payload.get('repository', {})
         repo = info.get('name', None)

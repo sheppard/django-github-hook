@@ -1,5 +1,7 @@
 SECRET_KEY = '1234'
 INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
     'github_hook',
 )
 DATABASES = {
