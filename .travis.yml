@@ -10,6 +10,7 @@ env:
   matrix:
     - DJANGO="django==1.8.13"
     - DJANGO="django==1.9.6"
+    - DJANGO="django==1.10.4"
 install:
  - pip install $DJANGO $DRF
 script:
