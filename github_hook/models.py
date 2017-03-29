@@ -24,4 +24,5 @@ class Hook(models.Model):
 class HookSignal(dispatch.Signal):
     pass
 
+
 hook_signal = HookSignal()

@@ -2,7 +2,6 @@ import logging
 
 import json
 
-from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.renderers import JSONRenderer
@@ -57,8 +56,11 @@ class HookView(GenericAPIView):
                 if hook.path != "send-signal":
                     hook.execute()
                 else:
-                    hook_signal.send(HookView, info=info, repo=repo, user=user, request=request)
-                    
+                    hook_signal.send(
+                        HookView, info=info, repo=repo,
+                        user=user, request=request
+                    )
+
         except Hook.DoesNotExist:
             # If there is not a script defined, then send a HookSignal
             hook_signal.send(HookView, request=request, payload=payload)

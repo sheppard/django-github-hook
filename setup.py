@@ -9,9 +9,10 @@
 from setuptools import setup
 from os.path import join, dirname
 
-LONG_DESCRIPION = """
+LONG_DESCRIPTION = """
 Webhooks for GitHub post-receive hooks and other POST requests.
 """
+
 
 def long_description():
     """Return long description from README.rst if it's present
@@ -21,6 +22,7 @@ def long_description():
     except IOError:
         return LONG_DESCRIPTION
 
+
 setup(
     name='django-github-hook',
     version='0.2.0',
@@ -28,7 +30,7 @@ setup(
     long_description=long_description(),
     author='S. Andrew Sheppard & Contributors',
     author_email='andrew@wq.io',
-    packages = ['github_hook'],
+    packages=['github_hook'],
     install_requires=['Django', 'djangorestframework'],
     classifiers=[
         'Intended Audience :: Developers',

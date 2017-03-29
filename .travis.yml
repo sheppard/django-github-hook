@@ -6,12 +6,14 @@ python:
  - "3.5"
 env:
   global:
-    - DRF="djangorestframework==3.3.3"
+    - DRF="djangorestframework==3.6.2"
   matrix:
-    - DJANGO="django==1.8.13"
-    - DJANGO="django==1.9.6"
-    - DJANGO="django==1.10.4"
+    - DJANGO="django==1.8.17"
+    - DJANGO="django==1.9.12"
+    - DJANGO="django==1.10.6"
+    - DJANGO="django==1.10.6" LINT=1
 install:
  - pip install $DJANGO $DRF
+ - pip install flake8
 script:
- - python setup.py test
+ - ./runtests.sh
