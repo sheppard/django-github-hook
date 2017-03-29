@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    :copyright: Copyright 2013-2016 by S. Andrew Sheppard
+    :copyright: Copyright 2013-2017 by S. Andrew Sheppard
     :contact: andrew@wq.io
 """
 
